@@ -159,12 +159,6 @@
     <Compile Include="Controls\SentimentControl.xaml.cs">
       <DependentUpon>SentimentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SentimentDistributionControl.xaml.cs">
-      <DependentUpon>SentimentDistributionControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SpeechToTextControl.xaml.cs">
-      <DependentUpon>SpeechToTextControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\UpDownVerticalBarControl.xaml.cs">
       <DependentUpon>UpDownVerticalBarControl.xaml</DependentUpon>
     </Compile>
@@ -226,12 +220,6 @@
     <Compile Include="Views\AnomalyDetector\ScenarioInfoControl.xaml.cs">
       <DependentUpon>ScenarioInfoControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BingNewsAnalytics.xaml.cs">
-      <DependentUpon>BingNewsAnalytics.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BingVisualSearch.xaml.cs">
-      <DependentUpon>BingVisualSearch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CustomVision\CustomObjectDetectionModel.cs" />
     <Compile Include="Views\CustomVision\CustomVisionDataLoader.cs" />
     <Compile Include="Views\CustomVision\CustomVisionExplorer.xaml.cs">
@@ -256,9 +244,6 @@
     </Compile>
     <Compile Include="Views\FaceIdentificationSetup.xaml.cs">
       <DependentUpon>FaceIdentificationSetup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GreetingKiosk.xaml.cs">
-      <DependentUpon>GreetingKiosk.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImageCollectionInsights\EmotionFilterViewModel.cs" />
     <Compile Include="Views\ImageCollectionInsights\FaceFilterViewModel.cs" />
@@ -286,18 +271,9 @@
     </Compile>
     <Compile Include="Models\InsuranceClaimAutomation\TokenOverlayInfo.cs" />
     <Compile Include="Models\InsuranceClaimAutomation\InsuranceClaimDataLoader.cs" />
-    <Compile Include="Views\MallKioskPage.xaml.cs">
-      <DependentUpon>MallKioskPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MallKioskDemoConfig\MallKioskDemoSettings.cs" />
     <Compile Include="Views\RealTimeDemo.xaml.cs">
       <DependentUpon>RealTimeDemo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AutomaticPhotoCapturePage.xaml.cs">
-      <DependentUpon>AutomaticPhotoCapturePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EmotionRecognitionPage.xaml.cs">
-      <DependentUpon>EmotionRecognitionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RealtimeDriverMonitoring.xaml.cs">
       <DependentUpon>RealtimeDriverMonitoring.xaml</DependentUpon>
@@ -307,9 +283,6 @@
     </Compile>
     <Compile Include="Views\RealtimeObjectDetection.xaml.cs">
       <DependentUpon>RealtimeObjectDetection.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RecognitionPage.xaml.cs">
-      <DependentUpon>RecognitionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -338,12 +311,6 @@
       <DependentUpon>VisionApiExplorer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VisualAlert\CustomVisionServiceWrapper.cs" />
-    <Compile Include="Views\VisualAlert\VisualAlertBuilderPage.xaml.cs">
-      <DependentUpon>VisualAlertBuilderPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VisualAlert\VisualAlertBuilderWizardControl.xaml.cs">
-      <DependentUpon>VisualAlertBuilderWizardControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\VisualAlert\VisualAlertDataLoader.cs" />
     <Compile Include="Views\VisualAlert\VisualAlertScenarioData.cs" />
   </ItemGroup>
@@ -428,14 +395,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\SentimentDistributionControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\SpeechToTextControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\UpDownVerticalBarControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -501,14 +460,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\BingNewsAnalytics.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\BingVisualSearch.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\CustomVision\CustomVisionExplorer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -537,10 +488,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\GreetingKiosk.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ImageCollectionInsights\ImageCollectionInsights.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -565,19 +512,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MallKioskPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\RealTimeDemo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AutomaticPhotoCapturePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\EmotionRecognitionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -592,10 +527,6 @@
     <Page Include="Views\RealtimeObjectDetection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RecognitionPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
@@ -632,14 +563,6 @@
     <Page Include="Views\VisionApiExplorer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\VisualAlert\VisualAlertBuilderPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VisualAlert\VisualAlertBuilderWizardControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

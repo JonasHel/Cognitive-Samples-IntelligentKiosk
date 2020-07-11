@@ -60,8 +60,8 @@ namespace IntelligentKioskSample
                 new NavMenuItem()
                 {
                     Glyph = "\uECA5",
-                    Label = "Demo Gallery",
-                    DestPage = typeof(DemoLauncherPage)
+                    Label = "Crowd Analyer",
+                    DestPage = typeof(RealTimeDemo)
                 },
 
                 new NavMenuItem()
@@ -161,7 +161,7 @@ namespace IntelligentKioskSample
         {
             // Each time a navigation event occurs, update the Back button's visibility
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                ((Frame)sender).CanGoBack && !(e.Content is DemoLauncherPage) ?
+                ((Frame)sender).CanGoBack && !(e.Content is RealTimeDemo) ?
                 AppViewBackButtonVisibility.Visible :
                 AppViewBackButtonVisibility.Collapsed;
 
@@ -170,7 +170,7 @@ namespace IntelligentKioskSample
             {
                 var control = (Page)e.Content;
 
-                if (!(control is DemoLauncherPage || control is FaceIdentificationSetup || control is SettingsPage || control is CustomVisionSetup))
+                if (!(control is RealTimeDemo || control is FaceIdentificationSetup || control is SettingsPage || control is CustomVisionSetup))
                 {
                     navView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
                     navView.SelectedItem = null;
