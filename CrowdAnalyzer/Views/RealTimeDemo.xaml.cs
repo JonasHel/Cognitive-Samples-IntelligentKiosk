@@ -491,6 +491,14 @@ namespace IntelligentKioskSample.Views
         {
             return (DateTime.Now - lastResultsTimestamp).TotalSeconds <= 3;
         }
+
+        private void RadioShowVideo_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cameraControl != null)
+            {
+                cameraControl.Visibility = (radioShowVideo.IsChecked ?? false) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
     }
 
     [XmlType]
