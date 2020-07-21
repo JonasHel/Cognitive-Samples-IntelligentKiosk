@@ -248,7 +248,7 @@ namespace IntelligentKioskSample.Views
                         this.pendingIdentificationAttemptCount.Add(persistedFaceId, 1);
                     }
 
-                    personInVideo = new Visitor { UniqueId = persistedFaceId };
+                    personInVideo = new Visitor { UniqueId = persistedFaceId, FirstSeen = DateTime.Now };
                     this.peopleInVideo.Add(persistedFaceId, personInVideo);
                     this.demographics.Visitors.Add(personInVideo);
 

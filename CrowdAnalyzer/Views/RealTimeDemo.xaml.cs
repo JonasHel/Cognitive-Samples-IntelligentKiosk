@@ -70,6 +70,38 @@ namespace IntelligentKioskSample.Views
 
         public static bool ShowAgeAndGender { get { return SettingsHelper.Instance.ShowAgeAndGender; } }
 
+        public List<string> outputMessages = new List<string>();
+
+        private int NrOfPeopleAtDisplay
+        {
+            set
+            {
+                SpanNrOfPeopleNow.Text = value.ToString();
+            }
+        }
+
+        private int NrOfPeopleAtDisplayHistory
+        {
+            set
+            {
+                SpanNrOfPeopleHistory.Text = value.ToString();
+            }
+        }
+
+        private DateTime timeOfLastLog = DateTime.Now;
+
+        public void MaybeNewOutputMessage(string message, bool force = false)
+        {
+            if ((DateTime.Now - timeOfLastLog).Seconds >= 5 || force)
+            {
+                outputMessages.Add($"{DateTime.Now.ToLongTimeString()} {message}");
+                string totalMessage = string.Join('\n', outputMessages);
+
+                debugText.Text = totalMessage;
+                timeOfLastLog = DateTime.Now;
+            }
+        }
+
         public RealTimeDemo()
         {
             this.InitializeComponent();
@@ -149,9 +181,10 @@ namespace IntelligentKioskSample.Views
                 this.lastDetectedFaceSample = null;
                 this.lastIdentifiedPersonSample = null;
                 this.lastSimilarPersistedFaceSample = null;
-                this.debugText.Text = "";
 
                 this.isProcessingPhoto = false;
+                NrOfPeopleAtDisplay = 0;
+                MaybeNewOutputMessage("Nobody at display...");
                 return;
             }
 
@@ -167,8 +200,6 @@ namespace IntelligentKioskSample.Views
 
             this.UpdateDemographics(e);
             this.UpdateEmotionTimelineUI(e);
-
-            this.debugText.Text = string.Format("Latency: {0}ms", (int)(DateTime.Now - start).TotalMilliseconds);
 
             this.isProcessingPhoto = false;
         }
@@ -280,18 +311,20 @@ namespace IntelligentKioskSample.Views
                     if (this.visitors.TryGetValue(persistedFaceId, out visitor))
                     {
                         visitor.Count++;
-                        SpanNrOfPeopleNow.Text = visitor.Count.ToString();
+                        TimeSpan timeAtDisplay = (DateTime.Now - visitor.FirstSeen);
+                        MaybeNewOutputMessage($"Visitor id={Math.Abs(visitor.UniqueId.GetHashCode())} has been at display for {timeAtDisplay.Seconds} seconds");
                     }
                     else
                     {
-                        SpanNrOfPeopleHistory.Text = (this.demographics.OverallMaleCount + this.demographics.OverallFemaleCount).ToString();
-
-
                         demographicsChanged = true;
 
-                        visitor = new Visitor { UniqueId = persistedFaceId, Count = 1 };
+                        visitor = new Visitor { UniqueId = persistedFaceId, Count = 1, FirstSeen = DateTime.Now };
                         this.visitors.Add(visitor.UniqueId, visitor);
                         this.demographics.Visitors.Add(visitor);
+
+                        string gender = (item.Face.FaceAttributes.Gender == Gender.Male) ? "male" : "female";
+                        MaybeNewOutputMessage($"New visitor, id={Math.Abs(visitor.UniqueId.GetHashCode())}, {gender}, {item.Face.FaceAttributes.Age} years", true);
+
 
                         // Update the demographics stats. We only do it for new visitors to avoid double counting. 
                         AgeDistribution genderBasedAgeDistribution = null;
@@ -336,10 +369,19 @@ namespace IntelligentKioskSample.Views
                 if (demographicsChanged)
                 {
                     this.ageGenderDistributionControl.UpdateData(this.demographics);
+
+                    int totalPeople = demographics.OverallFemaleCount + demographics.OverallMaleCount;
+                    NrOfPeopleAtDisplayHistory = totalPeople;
+                    if (totalPeople == 3)
+                    {
+                        SendTeamsMessage.NotifyLotsOfPeopleComing();
+                        MaybeNewOutputMessage($"More than 3 people at display last 5 minutes! Sending alert to Teams channel.", true);
+                    }
                 }
 
                 this.overallStatsControl.UpdateData(this.demographics);
             }
+            NrOfPeopleAtDisplay = img.DetectedFaces.Count();
         }
 
         private void UpdateDemographicsUI()
@@ -459,6 +501,8 @@ namespace IntelligentKioskSample.Views
 
         [XmlAttribute]
         public int Count { get; set; }
+
+        public DateTime FirstSeen { get; set; }
     }
 
     [XmlType]

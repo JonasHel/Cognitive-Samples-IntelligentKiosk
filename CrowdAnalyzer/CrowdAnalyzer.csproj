@@ -195,6 +195,7 @@
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Models\TabHeader.cs" />
     <Compile Include="NavMenuItem.cs" />
+    <Compile Include="SendTeamsMessage.cs" />
     <Compile Include="SettingsHelper.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Views\CustomVision\CustomObjectDetectionModel.cs" />
